@@ -27,12 +27,13 @@ export default class Navbar extends Component {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/Create a Story"></Link>
                             </li>
-                                <Link className="nav-link" to="/All Stories"</Link>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/All Stories"></Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/My profile">
                                     Shop &nbsp;
-                                    <span className="bg-light"> Stories count </i> {this.props.chapters.length} | ${this.props.sumStories(this.props.Stories)} </span>
+                                    <span className="bg-light">Stories count {this.props.chapters.length} |${this.props.sumStories(this.props.Stories)} </span>
                                 </Link>
                             </li>
                         </ul>

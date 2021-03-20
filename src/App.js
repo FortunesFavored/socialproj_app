@@ -8,20 +8,20 @@ import story3 from './views/story3';
 import userprofile from './views/userprofile';
 
 export default class App extends Component {
-  constructor(){
+  constructor() {
     super();
 
     this.state = {
       name: "username",
       users: [],
-      posts: []
+      chapters: []
     }
   }
 
-  addToStory= (posts) =>{
+  addToStory= (chapters) =>{
     this.setState(
       {
-        story: this.state.story.concat(posts)
+        story: this.state.story.concat(chapters)
       }
     )
   } 
@@ -30,15 +30,19 @@ export default class App extends Component {
     e.preventDefault();
     console.log(e);
    
-      
-    fetch(`https://ergast.com/api/f1/${username}/${post_id}/${date}/driverStandings.json`)
+    //database url will go here with appropriate fetch fields  
+    fetch(`https://ergast.com/api/f1/${username}/${chapter_id}/${date}/${stories_id}/${story_id}/driverStandings.json`)
         .then(res => res.json())
         .then(data => {
             this.setState({
-                racers: data.MRData.StandingsTable.StandingsLists[0].DriverStandings
+              stories: data.MRData.StandingsTable.StandingsLists[0].DriverStandings
+                ///some data from database: stories have their own unique id with 5 chapters, 
+                ///each referencing a parent story(either story1, 2, or 3)
+              
             })
         })
-        .catch(error => console.log(error))
+      .catch(error => console.log(error))
+    pass //remove once we have database set up
   }
 
   sumStories = (aList) => {
@@ -53,20 +57,21 @@ export default class App extends Component {
     return (
       <div>
         
-        <Navbar cart={this.state.story} sumCartStories={this.sumCartStories} />
+        <Navbar Stories={this.state.story} sumStories={this.sumStories} />
         <main className="container">
           <Switch>
-            <Route exact path="/" render={() => <Home name={this.state.users} racers={this.state.posts} handleSubmit={this.handleSubmit} />} />
-            <Route exact path="/createChapter" render={() => <CreateChapter name={this.state.createChapter} />} />
-            <Route exact path="/story1" render={() => <Story1 ={this.state.story1} />} />
-            <Route exact path="/story2" render={() => <Story2 ={this.story2} />}/>
-            <Route exact path="/story3" render={() => <Story3 ={this.state.stories} sumStories={this.sumStories} >} />
-            <Route exact path="/stories" render={({ match }) => <Chapters match={match} addToCart={this.chapters}/>}/>
+            <Route exact path="/" render={() => <Home name={this.state.users} chapters={this.state.chapters} stories={this.state.stories}handleSubmit={this.handleSubmit} />} />
+            <Route exact path="/createChapter" render={() => <createChapter name={this.state.createChapter} />} />
+            <Route exact path="/story1" render={() => <Story1 name={this.state.story1} />} />
+            <Route exact path="/story2" render={() => <Story2 name={this.state.story2} />} />
+            <Route exact path="/story3" render={() => <Story3 name={this.state.story3} />} />
+            <Route exact path="/stories" render={({ match }) => <chapters match={match} addToStory={this.chapters}/>}/>
           </Switch>
         </main>
       </div>
     )
-  }};
-}};
+  }
+}
+
         
 export default App;
