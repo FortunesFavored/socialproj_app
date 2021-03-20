@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class home extends Component {
+export default class createChapter extends Component {
     render() {
         return (
             <div>
