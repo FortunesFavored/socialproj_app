@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Navbar from '../socialproj_app/src/components/Navbar';
 import home from './views/home';
-import story1 from './views/storytree';
+import story1 from './views/allStories';
 import story2 from './views/story2';
 import story3 from './views/story3';
 import userprofile from './views/userprofile';
@@ -39,7 +39,7 @@ export default class App extends Component {
     console.log(e);
    
     //database url will go here with appropriate fetch fields  
-    fetch(`https://ergast.com/api/f1/${username}/${chapter_id}/${date}/${stories_id}/${story_id}/driverStandings.json`)
+    fetch(`https://localhost:5000/stories/${story_id}`)
         .then(res => res.json())
         .then(data => {
             this.setState({
@@ -65,18 +65,16 @@ export default class App extends Component {
     return (
       <div>
         
-        <Navbar Stories={this.state.story} sumStories={this.sumStories} />
+        <Navbar Stories={this.state.storytree} sumStories={this.sumStories} />
         <main className="container">
           <Switch>
-            <Route exact path="/" render={() => <Home name={this.state.users} chapters={this.state.chapters} stories={this.state.stories}handleSubmit={this.handleSubmit} />} />
+            <Route exact path="/" render={() => <Home name={this.state.users} chapters={this.state.chapter} stories={this.state.stories}handleSubmit={this.handleSubmit} />} />
             <Route exact path="/createChapter" render={() => <CreateChapter name={this.state.createChapter} />} />
-            <Route exact path="/storytree" render={() => <Storytree storyTree={this.state.storytree} />} />
-            <Route exact path="/stories" render={({ match }) => <Chapters match={match} addToStory={this.chapters}/>}/>
+            <Route exact path="/storytree" render={() => <Storytree name={this.state.story} />} />
+            <Route exact path="/stories" render={({ match }) => <Chapter match={match} addToStory={this.chapter}/>}/>
           </Switch>
         </main>
       </div>
     )
   }
 }
-        
-export default App;
