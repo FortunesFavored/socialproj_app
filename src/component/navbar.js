@@ -2,30 +2,25 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 export default class Navbar extends Component {
-    // sumStories = aList => {
-    //     let total = 0;
-    //     for (let i = 0; i < aList.length; i++){
-    //         total += aList[i]
-    //     }
-    //     return total
-    // }
 
     render() {
         return (
             <div>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <nav className="navbar sticky-top navbar-light bg-light">
                     <div className="container-fluid">
-                        <Link className="navbar-brand" to="/">Navbar</Link>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                        </button>
+                        <nav class="navbar navbar-light bg-light">
+                            <a class="navbar-brand" href="#">
+                                <img src="../assets/StoriesIcon.png" width="30" height="30" class="d-inline-block align-top" alt=""></img>
+                                Home
+                            </a>
+                        </nav>
                         <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <Link className="nav-link" aria-current="page" to="/">Home</Link>
+                                <Link className="nav-link" to="/allStories"></Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/myStories">My Stories</Link>
+                                <Link className="nav-link" to="/userprofile"></Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/allStories">All Stories</Link>
@@ -33,9 +28,8 @@ export default class Navbar extends Component {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/userprofile">My Profile</Link>
                             </li>
-                            </ul>
-                            
-                        </div>                       
+                        </ul>
+                        </div>
                     </div>
                 </nav>
             </div>
