@@ -26,7 +26,7 @@ export default class Navbar extends Component {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/My profile">
                                     Shop &nbsp;
-                                    <span className="bg-light"> Stories count {this.props.chapters.length} | ${this.props.sumStories(this.props.Stories)} </span>
+                                    <span className="bg-light">Stories count {this.props.chapters.length} |${this.props.sumStories(this.props.Stories)} </span>
                                 </Link>
                             </li>
                         </ul>
