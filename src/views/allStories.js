@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class story1 extends Component {
+export default class allStories extends Component {
     render() {
         return (
             <div>

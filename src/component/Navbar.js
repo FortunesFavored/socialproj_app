@@ -1,0 +1,46 @@
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
+export default class Navbar extends Component {
+    // sumStories = aList => {
+    //     let total = 0;
+    //     for (let i = 0; i < aList.length; i++){
+    //         total += aList[i]
+    //     }
+    //     return total
+    // }
+
+    render() {
+        return (
+            <div>
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <div className="container-fluid">
+                        <Link className="navbar-brand" to="/">Navbar</Link>
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                        </button>
+                        <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <Link className="nav-link" aria-current="page" to="/">Home</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/myStories">My Stories</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/allStories">All Stories</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/userprofile">My Profile</Link>
+                                    Shop &nbsp;
+                                    <span className="bg-light">Stories count {this.props.chapters.length} |${this.props.sumStories(this.props.Stories)} </span>
+                            </li>
+                            </ul>
+                            
+                        </div>                       
+                    </div>
+                </nav>
+            </div>
+        )
+    }
+}

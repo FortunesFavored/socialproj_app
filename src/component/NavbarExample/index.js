@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
+import './navbar.css';
 import { Link } from 'react-router-dom';
 
 export default class Navbar extends Component {
-    // sumStories = aList => {
-    //     let total = 0;
-    //     for (let i = 0; i < aList.length; i++){
-    //         total += aList[i]
-    //     }
-    //     return total
-    // }
+    sumCartProducts = aList => {
+        let total = 0;
+        for (let i = 0; i < aList.length; i++){
+            total += aList[i].price
+        }
+        return total
+    }
 
     render() {
         return (
             <div>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <nav className="navbar navbar-expand-lg navbar-light bg-light nav-margin">
                     <div className="container-fluid">
                         <Link className="navbar-brand" to="/">Navbar</Link>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,15 +26,15 @@ export default class Navbar extends Component {
                                 <Link className="nav-link" aria-current="page" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/Create a Story"></Link>
+                                <Link className="nav-link" to="/createChapter"></Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/All Stories"></Link>
+                                <Link className="nav-link" to="/userprofile">My Profile</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/My profile">
+                                <Link className="nav-link" to="/allStories">
                                     Shop &nbsp;
-                                    <span className="bg-light">Stories count {this.props.chapters.length} |${this.props.sumStories(this.props.Stories)} </span>
+                                    <span className="bg-light">{this.props.stories.length} | ${this.sumStories(this.props.stories)} </span>
                                 </Link>
                             </li>
                         </ul>
