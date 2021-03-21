@@ -2,13 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 export default class Navbar extends Component {
-    // sumStories = aList => {
-    //     let total = 0;
-    //     for (let i = 0; i < aList.length; i++){
-    //         total += aList[i]
-    //     }
-    //     return total
-    // }
 
     render() {
         return (
@@ -27,12 +20,13 @@ export default class Navbar extends Component {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/Create a Story"></Link>
                             </li>
-                                <Link className="nav-link" to="/All Stories"</Link>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/All Stories"></Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/My profile">
                                     Shop &nbsp;
-                                    <span className="bg-light"> Stories count </i> {this.props.chapters.length} | ${this.props.sumStories(this.props.Stories)} </span>
+                                    <span className="bg-light"> Stories count {this.props.chapters.length} | ${this.props.sumStories(this.props.Stories)} </span>
                                 </Link>
                             </li>
                         </ul>
