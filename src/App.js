@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Navbar from './component/Navbar';
+import Navbar from './component/navbar';
 import Home from './views/home';
 import AllStories from './views/allStories';
 import MyStories from './views/myStories';
@@ -11,9 +11,7 @@ export default class App extends Component {
     super();
 
     this.state = {
-      name: "user_id",
-      chapter: [],
-      stories: []
+      name: "user_id"
     }
   }
   addToStories = (chapter) => {
@@ -34,7 +32,6 @@ export default class App extends Component {
 
   handleSubmitStory= (e) => {
     e.preventDefault();
-    console.log(e);
     let username = e.target.username.value;
     let date_created = e.target.date_created.value;
     let title = e.target.title.value;
@@ -56,7 +53,6 @@ export default class App extends Component {
    
   handleSubmitChapter = (e) => {
     e.preventDefault();
-    console.log(e);
     let username = e.target.username.value;
     let date_created = e.target.date_created.value;
     let title = e.target.title.value;
@@ -84,7 +80,7 @@ export default class App extends Component {
           <Switch>
             <Route exact path="/" render={() => <Home stories={this.state.stories} handleSubmitStory={this.handleSubmitStory} />} />
             <Route exact path="/myStories/:id" render={({ match }) => <MyStories name={this.state.users} stories={this.state.stories} match={match} />}/>
-            <Route exact path="/allStories/:id" render={({ match }) => <AllStories match={match} />}/>
+            <Route exact path="/allStories" render={({ match }) => <AllStories match={match} />}/>
           </Switch>
         </main>
       </div>
